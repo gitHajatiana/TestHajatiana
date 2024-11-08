@@ -31,6 +31,6 @@ export class EntityModele {
   @CreateDateColumn()
   createdAt: Date;
 
-  @OneToMany(()=> UserEntity, (userEntity) => userEntity.entity)
+  @OneToMany(()=> UserEntity, (userEntity) => userEntity.entity, {cascade: true})
   userEntities: UserEntity[];
 }

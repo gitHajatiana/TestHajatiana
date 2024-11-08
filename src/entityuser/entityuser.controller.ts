@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { EntityuserService } from './entityuser.service';
 import { UserEntity } from './user-entity.entity';
 
@@ -22,6 +22,10 @@ export class EntityuserController {
         return this.entityUserService.addEntityUser(userentityData);
     }
 
+    @Put(':id')
+    async updateuserEntity(@Param('id') id: number, @Body() userentityData: Partial<UserEntity>): Promise<UserEntity>{
+        return this.entityUserService.updateEntityUser(id,userentityData);
+    }
 
     @Delete(':id')
     async deleteEntityUser(@Param('id') id: number): Promise<void>{

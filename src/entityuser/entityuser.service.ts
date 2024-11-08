@@ -30,11 +30,15 @@ export class EntityuserService {
         return await this.userEntityRepository.save(userEntity);
     }
 
-
+    async updateEntityUser(id:number, entityUserData: Partial<UserEntity>):Promise<UserEntity>{
+        await this.userEntityRepository.update(id, entityUserData);
+        const updateEntityUser = await this.userEntityRepository.findOne({where:{id}});
+        return updateEntityUser;
+    }
 
     async deleteUserEntity(id: number): Promise<void>{
         const result = await this.entityModeleRepository.delete(id);
-        if(await result.affected ===0){
+        if(result.affected ===0){
             throw new NotFoundException(`Post avec l'ID ${id} non trouvé`);
         }
     }
