@@ -17,7 +17,7 @@ export class EntityController {
   }
 
   @Put(':id')
-  async update(@Param(':id') id: number, @Body() entityData: Partial<EntityModele>): Promise<EntityModele>{
+  async update(@Param('id') id: number, @Body() entityData: Partial<EntityModele>): Promise<EntityModele>{
     return this.entityService.updateEntity(id, entityData);
   }
   
