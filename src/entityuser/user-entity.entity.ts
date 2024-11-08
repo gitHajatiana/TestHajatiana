@@ -8,10 +8,10 @@ export class UserEntity{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => EntityModele, (entityModele) => entityModele.userEntities)
+    @ManyToOne(() => EntityModele, (entityModele) => entityModele.userEntities, {onDelete: 'CASCADE'})
     entity: EntityModele;
 
-    @ManyToOne(() => User, (user) => user.userEntities)
+    @ManyToOne(() => User, (user) => user.userEntities, {onDelete: 'CASCADE'})
     user: User;
 
 

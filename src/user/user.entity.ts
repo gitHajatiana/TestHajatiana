@@ -27,7 +27,7 @@ export class User{
     @CreateDateColumn()
     createdAt: Date;
 
-    @OneToMany(()=> UserEntity, (userEntity) => userEntity.entity)
+    @OneToMany(()=> UserEntity, (userEntity) => userEntity.entity, { cascade: true})
   userEntities: UserEntity[];
 
 }

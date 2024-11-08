@@ -22,6 +22,7 @@ export class EntityuserController {
         return this.entityUserService.addEntityUser(userentityData);
     }
 
+
     @Delete(':id')
     async deleteEntityUser(@Param('id') id: number): Promise<void>{
         return this.entityUserService.deleteUserEntity(id);

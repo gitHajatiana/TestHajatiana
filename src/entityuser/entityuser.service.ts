@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from './user-entity.entity';
 import { Repository } from 'typeorm';
@@ -7,6 +7,7 @@ import { EntityModele } from 'src/entity/entity.entity';
 
 @Injectable()
 export class EntityuserService {
+
     constructor(
         @InjectRepository(UserEntity)
         private userEntityRepository: Repository<UserEntity>,
@@ -29,13 +30,12 @@ export class EntityuserService {
         return await this.userEntityRepository.save(userEntity);
     }
 
-    async update(id: number,userEntityData: Partial<UserEntity>): Promise<UserEntity>{
-        await this.entityModeleRepository.update(id, userEntityData);
-        const updateUserEntity = await this.userEntityRepository.findOne({where:{id}});
-        return updateUserEntity;
-    }
+
 
     async deleteUserEntity(id: number): Promise<void>{
-        this.entityModeleRepository.delete(id);
+        const result = await this.entityModeleRepository.delete(id);
+        if(await result.affected ===0){
+            throw new NotFoundException(`Post avec l'ID ${id} non trouvé`);
+        }
     }
 }
