@@ -26,9 +26,15 @@ export class EntityuserService {
         return this.userEntityRepository.findOne({where:{id},relations: ['user','entity']});
     }
 
-    async addEntityUser(userEntityData: Partial<UserEntity>): Promise<UserEntity>{
-        const userEntity = this.userEntityRepository.create(userEntityData);
-        return await this.userEntityRepository.save(userEntity);
+    async addEntityUser(idUser: number,idEntity:number): Promise<UserEntity>{
+        //Recuperation de l'user et l'entity par son id
+        const user = await this.userRepository.findOneBy({id:idUser});
+        const entity = await this.entityModeleRepository.findOneBy({id:idEntity});
+
+        
+        const entityUser = this.userEntityRepository.create({entity,user});
+        return this.userEntityRepository.save(entityUser);
+        
     }
 
     async updateEntityUser(id:number, entityUserData: Partial<UserEntity>):Promise<UserEntity>{

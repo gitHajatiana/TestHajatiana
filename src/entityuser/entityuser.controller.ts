@@ -17,9 +17,9 @@ export class EntityuserController {
         return this.entityUserService.findById(id);
     }
 
-    @Post()
-    async adduserEntity(@Body() userentityData: Partial<UserEntity>): Promise<UserEntity>{
-        return this.entityUserService.addEntityUser(userentityData);
+    @Post(':idUser/:idEntity')
+    async adduserEntity(@Param('idUser') idUser : number,@Param('idEntity') idEntity: number): Promise<UserEntity>{
+        return this.entityUserService.addEntityUser(idUser,idEntity);
     }
 
     @Put(':id')
