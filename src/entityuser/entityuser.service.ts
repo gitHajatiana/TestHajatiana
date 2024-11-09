@@ -17,6 +17,7 @@ export class EntityuserService {
         private entityModeleRepository: Repository<EntityModele>,
     ){}
 
+
     async findAll(): Promise<UserEntity[]>{
         return this.userEntityRepository.find({relations: ['user','entity']});
     }
