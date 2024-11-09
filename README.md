@@ -22,11 +22,6 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Configuration de la base de données
-
-Les informations de connexion à la base de données sont configurées dans le fichier `AppModule`. 
-
-Pour vérifier ou modifier ces paramètres, rendez-vous dans le fichier `src/app.module.ts`.
 
 
 ## Description
@@ -38,6 +33,10 @@ Pour vérifier ou modifier ces paramètres, rendez-vous dans le fichier `src/app
 ```bash
 $ npm install
 ```
+## Configuration de la base de données
+
+Les informations de connexion à la base de données sont configurées dans le fichier `AppModule`. 
+Pour vérifier ou modifier ces paramètres, rendez-vous dans le fichier `src/app.module.ts`.
 
 ## Running the app
 
