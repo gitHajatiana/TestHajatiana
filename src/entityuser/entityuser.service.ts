@@ -37,7 +37,7 @@ export class EntityuserService {
     }
 
     async deleteUserEntity(id: number): Promise<void>{
-        const result = await this.entityModeleRepository.delete(id);
+        const result = await this.userEntityRepository.delete(id);
         if(result.affected ===0){
             throw new NotFoundException(`Post avec l'ID ${id} non trouvé`);
         }
